@@ -57,3 +57,10 @@ def read_data(dataset_path:str, dir='databases'):
         # tratamento dos dados (Nulos, Conversões, Pradronizações)
         frame.to_pickle(proc_filename)
         return frame
+    
+def save_pkl_file(dataframe: pd.DataFrame, dataset_path: str, dir: str="databases") -> None:
+    db_path = Path(f'{dir}/{dataset_path}')
+    dir_path = db_path.parent
+    proc_filename = db_path.parent / 'processed' / db_path.with_suffix('.pkl').name
+    dataframe.to_pickle
+    print(f"Saved as .pkl format\n")
