@@ -1,4 +1,5 @@
 from matplotlib import pyplot as plt
+import seaborn as sns
 import pandas as pd
 import numpy as np
 
@@ -27,4 +28,33 @@ def grafico_barra(dataframe: pd.DataFrame, eixo_x: pd.Series, eixo_y: pd.Series,
     plt.xticks(rotation = rotation, size = 12)
     plt.yticks(size = 12)
     plt.title(titulo)
+    plt.show()
+
+def grafico_boxplot(data_frame: pd.DataFrame, x_arg: pd.Series, y_arg: pd.Series, title: str = "Sem título", rotate: int = 90) -> None:
+    figure, axis = plt.subplots(figsize = (12, 6))
+    sns.boxplot(
+        data = data_frame,
+        x = x_arg,
+        y = y_arg,
+        ax = axis
+    )
+    plt.title(title)
+    plt.xticks(rotation = rotate)
+    plt.show()
+
+def grafico_heatmap(data: pd.DataFrame, rotation: int = 90) -> None:
+    figure = plt.figure(figsize = (12, 6))
+    sns.heatmap(data = data)
+    plt.xticks(rotation = rotation)
+    plt.show()
+    
+def grafico_scatterplot(dataframe: pd.DataFrame, nome_coluna_1: str, nome_coluna_2: str, cor: str = "blue", alfa: float = 0.75):
+    figure, axis = plt.subplots(figsize = (12, 6))
+    sns.scatterplot(
+        data = dataframe,
+        x = nome_coluna_1,
+        y = nome_coluna_2,
+        color = cor,
+        alpha = alfa
+    )
     plt.show()
