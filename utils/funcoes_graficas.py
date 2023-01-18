@@ -3,7 +3,7 @@ import seaborn as sns
 import pandas as pd
 import numpy as np
 
-def grafico_pizza(x: pd.Series, label: pd.Series, selected_data: pd.DataFrame, title: str) -> None:
+def grafico_pizza(x: str, label: str, selected_data: pd.DataFrame, title: str = "Sem título") -> None:
     figure = plt.figure(figsize = (12, 6))
     plt.pie(
         x = x,
@@ -12,17 +12,18 @@ def grafico_pizza(x: pd.Series, label: pd.Series, selected_data: pd.DataFrame, t
         startangle = 90,
         data = selected_data
     )
-    plt.title = (f"{title}")
+    plt.title(f"{title}")
     plt.show()
 
 def grafico_barra(dataframe: pd.DataFrame, eixo_x: pd.Series, eixo_y: pd.Series, eixo_x_titulo: str, eixo_y_titulo: str, titulo: str, rotation: int = 0, cor: str = "#A03312") -> None:
     figure = plt.figure(figsize = (12, 6))
-    plt.bar(x = eixo_x,
-             height= eixo_y,
-             data = dataframe,
-             color = cor,
-             width = 0.5
-         )
+    plt.bar(
+        x = eixo_x,
+        height= eixo_y,
+        data = dataframe,
+        color = cor,
+        width = 0.5
+    )
     plt.xlabel(eixo_x_titulo, fontsize = 16)
     plt.ylabel(eixo_y_titulo, fontsize = 14)
     plt.xticks(rotation = rotation, size = 12)
@@ -30,10 +31,10 @@ def grafico_barra(dataframe: pd.DataFrame, eixo_x: pd.Series, eixo_y: pd.Series,
     plt.title(titulo)
     plt.show()
 
-def grafico_boxplot(data_frame: pd.DataFrame, x_arg: pd.Series, y_arg: pd.Series, title: str = "Sem título", rotate: int = 90) -> None:
+def grafico_boxplot(dataframe: pd.DataFrame, x_arg: str, y_arg: str, title: str = "Sem título", rotate: int = 90) -> None:
     figure, axis = plt.subplots(figsize = (12, 6))
     sns.boxplot(
-        data = data_frame,
+        data = dataframe,
         x = x_arg,
         y = y_arg,
         ax = axis
